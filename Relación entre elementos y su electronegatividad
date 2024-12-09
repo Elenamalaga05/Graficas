@@ -1,0 +1,13 @@
+import matplotlib.pyplot as plt
+
+# Datos
+elementos = ['H', 'C', 'N', 'O', 'F', 'Cl', 'Br', 'I', 'S', 'P']
+electronegatividad = [2.20, 2.55, 3.04, 3.44, 3.98, 3.16, 2.96, 2.66, 2.58, 2.19]
+
+plt.figure(figsize=(10, 6))
+plt.bar(elementos, electronegatividad, color='skyblue')
+plt.title('Relación entre Elementos y su Electronegatividad')
+plt.xlabel('Elementos')
+plt.ylabel('Electronegatividad')
+plt.grid(axis='y')
+plt.show()
