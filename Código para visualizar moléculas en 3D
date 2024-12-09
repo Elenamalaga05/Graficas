@@ -1,0 +1,48 @@
+from rdkit import Chem
+from rdkit.Chem import AllChem
+import py3Dmol
+
+# Diccionario de moléculas con notación SMILES
+smiles_dict = {
+    "Agua (H2O)": "O",
+    "Etanol": "CCO",
+    "Ciclohexano": "C1CCCCC1",
+    "Ácido acético": "CC(=O)O",
+    "Benceno": "C1=CC=CC=C1",
+    "Metano": "C",
+    "Metanol": "CO",
+    "Etano": "CC",
+    "Propano": "CCC",
+    "Butano": "CCCC",
+    "Acetona": "CC(=O)C",
+    "Glicina (aminoácido)": "C(C(=O)O)N",
+    "Alanina (aminoácido)": "CC(C(=O)O)N",
+    "Fenol": "C1=CC=C(C=C1)O",
+    "Tetrahidrofuran (THF)": "C1CCOC1",
+    "Etanolamina": "NCCO",
+    "Ácido aspártico (aminoácido)": "C(C(=O)O)(N)C(=O)O",
+    "Trimetilamina": "CCN(CC)CC",
+    "Dietil éter": "CCOCC",
+    "Ácido láctico": "C(C(=O)O)O",
+    "Naftaleno": "C1=CC=C2C=CC=CC2=C1",
+    "Dimetilformamida (DMF)": "CN(C)C=O",
+    "Ácido cítrico": "C(C(=O)O)C(C(=O)O)(C(=O)O)O"
+}
+
+def show_3d_molecule(smiles, molecule_name):
+    mol = Chem.MolFromSmiles(smiles)
+    mol = Chem.AddHs(mol)
+    AllChem.EmbedMolecule(mol, AllChem.ETKDG())
+    mol_block = Chem.MolToMolBlock(mol)
+
+    viewer = py3Dmol.view(width=400, height=400)
+    viewer.addModel(mol_block, "mol")
+    viewer.setStyle({"stick": {}})
+    viewer.zoomTo()
+    print(f"Mostrando: {molecule_name}")
+    return viewer
+
+# Mostrar todas las moléculas
+for name, smiles in smiles_dict.items():
+    viewer = show_3d_molecule(smiles, name)
+    viewer.show()
