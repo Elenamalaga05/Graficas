@@ -1,0 +1,11 @@
+# Datos 
+elementos = ['H', 'He', 'C', 'N', 'O', 'Na', 'Mg', 'Al', 'Si', 'P']
+masas_molares = [1.008, 4.0026, 12.01, 14.007, 15.999, 22.989, 24.305, 26.982, 28.085, 30.974]
+
+plt.figure(figsize=(10, 6))
+plt.plot(elementos, masas_molares, marker='o', linestyle='-', color='purple')
+plt.title('Relación de Elementos y su Masa Molar')
+plt.xlabel('Elementos')
+plt.ylabel('Masa Molar (g/mol)')
+plt.grid()
+plt.show()
